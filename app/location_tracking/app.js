@@ -156,13 +156,18 @@ const sampleOfficers = [
 ];
 
 async function loadData() {
-  return {
-    data: {
-      incidents: sampleIncidents,
-      officers: sampleOfficers,
-    },
-    error: null,
-  };
+  fetch('http://localhost:8001/api/v1/state').then((res) => {
+    console.log(res);
+    return {
+      data: {
+        incidents: res.sampleIncidents,
+        officers: res.sampleOfficers,
+      },
+      error: null,
+    };
+
+  });
+  
 }
 
 start();
